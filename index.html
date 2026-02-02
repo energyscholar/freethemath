@@ -3,28 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free The Math</title>
+    <title>Free The Math — The Same Mathematics Predicts Market Crashes, Blackouts, and Cardiac Failures</title>
+    <meta name="description" content="Free the Math: at least six scientific fields independently discovered the same mathematics for predicting tipping points. Most didn't know about each other. It took nine decades for anyone to notice.">
+    <meta name="keywords" content="critical phenomena, cross-domain criticality, tipping point prediction, cascading failure, independent discovery, mathematics, market crashes, power grid, cardiac, ecosystem collapse, phase transition, free the math, Stephenson, arXiv">
+    <meta name="author" content="Bruce Stephenson">
+    <link rel="canonical" href="https://freethemath.org">
+    <meta property="og:title" content="Free The Math">
+    <meta property="og:description" content="The same math predicts market crashes, power grid blackouts, and cardiac failures. At least six fields discovered it independently. Most didn't know about each other.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://freethemath.org">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free The Math">
+    <meta name="twitter:description" content="At least six scientific fields independently discovered the same mathematics. Most didn't know about each other. It took nine decades for anyone to notice.">
     <style>
+        :root {
+            --bg: #0a0a0a;
+            --text: #e0e0e0;
+            --accent: #00ff88;
+            --accent-dim: #00aa55;
+            --border: #333;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Courier New', monospace;
-            background: #0a0a0a;
-            color: #00ff88;
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            padding: 2rem;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 720px;
+            width: 100%;
+        }
+
+        /* Section 1: Hero */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+        }
+
+        h1 {
+            color: var(--accent);
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        .hero-text {
+            color: var(--accent-dim);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Body sections */
+        section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Timeline list in Section 3 */
+        .timeline {
+            list-style: none;
+            margin: 1.2rem 0;
+            padding-left: 1rem;
+        }
+
+        .timeline li {
+            margin-bottom: 0.4rem;
+            color: var(--text);
+        }
+
+        .timeline li span.field {
+            color: var(--accent);
+        }
+
+        /* Section 5: Open Question — extra visual weight */
+        .open-question {
+            padding: 2.5rem 1.5rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
             text-align: center;
         }
-        .container { padding: 2rem; }
-        h1 { font-size: 2.5rem; margin-bottom: 1rem; text-shadow: 0 0 20px rgba(0,255,136,0.3); }
-        p { color: #888; font-size: 1.1rem; }
+
+        .open-question p {
+            font-size: 1.15rem;
+            line-height: 2;
+            margin-bottom: 1.2rem;
+        }
+
+        .open-question p.alt-question {
+            color: var(--accent);
+            font-size: 1.25rem;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.25);
+        }
+
+        .open-question p.status {
+            color: var(--accent-dim);
+            font-style: italic;
+        }
+
+        /* Section 6: Paper link button */
+        .paper-link {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            padding: 0.9rem 1.8rem;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            margin: 1rem 0;
+            min-height: 44px;
+            transition: all 0.2s;
+        }
+
+        .paper-link:hover {
+            background: var(--text);
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+        }
+
+        .appendix-note {
+            font-size: 0.95rem;
+            color: #aaa;
+        }
+
+        /* Section 7: "It should be free." emphasis */
+        .punchline {
+            color: var(--accent);
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+            margin-top: 0.5rem;
+        }
+
+        /* Section 8: Contact */
+        .contact-card {
+            border: 1px solid var(--border);
+            padding: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-card a {
+            color: var(--accent-dim);
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
+            color: var(--accent);
+        }
+
+        .contact-secondary {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        /* Footer with search-bridge */
+        footer {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .search-bridge {
+            font-size: 0.8rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .search-bridge a {
+            color: #888;
+            text-decoration: none;
+        }
+
+        .search-bridge a:hover {
+            color: var(--accent-dim);
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1.2rem; }
+            h1 { font-size: 2rem; }
+            .hero-text { font-size: 1rem; }
+            .open-question { padding: 2rem 0.5rem; }
+            .open-question p { font-size: 1.05rem; }
+            .open-question p.alt-question { font-size: 1.1rem; }
+            .punchline { font-size: 1.2rem; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>FREE THE MATH</h1>
-        <p>Coming soon.</p>
+
+        <!-- Section 1: Hero -->
+        <header id="hero">
+            <h1>FREE THE MATH</h1>
+            <p class="hero-text">The same mathematics predicts market crashes, power grid blackouts, cardiac failures, and ecosystem collapse. At least six scientific fields discovered it independently. Most didn't know about each other. It took nine decades for anyone to notice.</p>
+        </header>
+
+        <!-- Section 2: What Is This Math? -->
+        <section id="what">
+            <h2>// WHAT IS THIS MATH?</h2>
+            <p>It predicts tipping points — moments when small changes cause huge effects.</p>
+            <p>A match starting a forest fire. A traffic jam forming out of nothing on a clear highway. A single tripped relay cascading into a regional blackout. A healthy heartbeat suddenly becoming erratic.</p>
+            <p>The mathematics that predicts all of these is the same mathematics. Physicists, biologists, financial analysts, and engineers each invented their own version — under different names, in different journals, without knowing the others existed.</p>
+        </section>
+
+        <!-- Section 3: The Pattern -->
+        <section id="pattern">
+            <h2>// THE PATTERN</h2>
+            <p>Between 1935 and 2025, researchers in at least six fields independently developed mathematical tools for detecting when complex systems are about to undergo dramatic change:</p>
+            <ul class="timeline">
+                <li><span class="field">Physics (1944)</span> — correlation length</li>
+                <li><span class="field">Biology (1994)</span> — heart rate scaling</li>
+                <li><span class="field">Finance (1994)</span> — market memory</li>
+                <li><span class="field">Machine Learning (2001)</span> — neural network stability</li>
+                <li><span class="field">Power Grids (2004)</span> — cascade prediction</li>
+                <li><span class="field">Traffic Flow (1935/2004)</span> — congestion tipping points</li>
+            </ul>
+            <p>Each field published in its own journals, invented its own terminology, and cited its own literature. Cross-domain awareness was minimal until after 2010.</p>
+        </section>
+
+        <!-- Section 4: The Cost -->
+        <section id="cost">
+            <h2>// WHAT DID THIS COST?</h2>
+            <p>A cardiologist in 1996 could have used techniques a physicist published in 1971 — but would have needed to read statistical mechanics journals, recognize the connection through completely different notation, and translate the methods to biological data.</p>
+            <p>In practice, this rarely happened. The same tools were reinvented, published in domain-specific journals, and locked behind separate paywalls.</p>
+            <p>The cost was real: redundant research, delayed medical tools, and infrastructure vulnerabilities that could have been addressed sooner.</p>
+        </section>
+
+        <!-- Section 5: The Open Question -->
+        <section id="question" class="open-question">
+            <h2>// THE OPEN QUESTION</h2>
+            <p>Was this fragmentation entirely natural — an inevitable consequence of disciplinary specialization?</p>
+            <p class="alt-question">Or did structural incentives actively maintain it?</p>
+            <p class="status">That question remains open.</p>
+        </section>
+
+        <!-- Section 6: The Research / Paper -->
+        <section id="research">
+            <h2>// THE RESEARCH</h2>
+            <p>The full analysis is documented in a paper on arXiv, endorsed by Didier Sornette (ETH Zurich).</p>
+            <a href="https://arxiv.org/abs/2601.22389" class="paper-link">Read the full paper on arXiv — "Convergent Discovery of Critical Phenomena Mathematics Across Disciplines: A Cross-Domain Analysis"</a>
+            <p class="appendix-note">If you're short on time, start with Appendix B — the plain-language summary. You don't need the technical sections to understand what was found and why it matters.</p>
+        </section>
+
+        <!-- Section 7: The Bottom Line -->
+        <section id="bottom-line">
+            <h2>// THE BOTTOM LINE</h2>
+            <p>The math works. It predicts market crashes, detects cardiac dysfunction, identifies when ecosystems are about to collapse, and warns of cascading infrastructure failures.</p>
+            <p>It applies to any interconnected system. It is fundamental — discoverable from first principles.</p>
+            <p class="punchline">It should be free.</p>
+        </section>
+
+        <!-- Section 8: Contact -->
+        <section id="contact">
+            <h2>// CONTACT</h2>
+            <div class="contact-card">
+                <h3>Bruce Stephenson</h3>
+                <p class="contact-secondary">B.A. Physics, Reed College | Former CTO (6x) | Independent Researcher</p>
+                <p class="contact-secondary"><a href="mailto:energyscholar@gmail.com">energyscholar@gmail.com</a> | <a href="tel:+15412500662">(541) 250-0662</a></p>
+                <p class="contact-secondary"><a href="https://linkedin.com/in/stephensonbruce">linkedin.com/in/stephensonbruce</a></p>
+                <p>Available for interviews — on record, on background, or deep technical walkthrough.</p>
+            </div>
+        </section>
+
     </div>
+
+    <footer>
+        <p class="search-bridge">This site summarizes research on critical phenomena mathematics — the study of phase transitions, tipping points, and cascading failures across scientific disciplines. Full technical analysis: <a href="https://arxiv.org/abs/2601.22389">Stephenson &amp; Macomber (2026), "Convergent Discovery of Critical Phenomena Mathematics," arXiv</a>.</p>
+    </footer>
 </body>
 </html>
