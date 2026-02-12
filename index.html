@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free The Math — The Same Mathematics Predicts Market Crashes, Blackouts, and Cardiac Failures</title>
-    <meta name="description" content="Free the Math: at least six scientific fields independently discovered the same mathematics for predicting tipping points. Most didn't know about each other. It took nine decades for anyone to notice.">
+    <meta name="description" content="Free the Math: at least six scientific fields arrived at the same mathematics for predicting tipping points, largely without building on each other. It took nine decades for anyone to map the full pattern.">
     <meta name="keywords" content="critical phenomena, cross-domain criticality, tipping point prediction, cascading failure, independent discovery, mathematics, market crashes, power grid, cardiac, ecosystem collapse, phase transition, free the math, Stephenson, arXiv">
     <meta name="author" content="Bruce Stephenson">
     <link rel="canonical" href="https://freethemath.org">
     <meta property="og:title" content="Free The Math">
-    <meta property="og:description" content="The same math predicts market crashes, power grid blackouts, and cardiac failures. At least six fields discovered it independently. Most didn't know about each other.">
+    <meta property="og:description" content="The same math predicts market crashes, power grid blackouts, and cardiac failures. At least six fields arrived at it separately. Most had minimal awareness of each other's work.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://freethemath.org">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Free The Math">
-    <meta name="twitter:description" content="At least six scientific fields independently discovered the same mathematics. Most didn't know about each other. It took nine decades for anyone to notice.">
+    <meta name="twitter:description" content="At least six scientific fields arrived at the same mathematics for predicting tipping points. Most had minimal awareness of each other's work.">
     <style>
         :root {
             --bg: #0a0a0a;
@@ -129,7 +129,29 @@
             font-style: italic;
         }
 
-        /* Section 6: Paper link button */
+        /* Hero paper button — primary CTA */
+        .paper-link-hero {
+            display: block;
+            background: var(--accent);
+            color: var(--bg);
+            padding: 1.2rem 2.4rem;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin: 2rem auto 0;
+            max-width: 360px;
+            min-height: 44px;
+            text-align: center;
+            transition: all 0.2s;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .paper-link-hero:hover {
+            background: var(--text);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
+        }
+
+        /* Inline paper link (for body text) */
         .paper-link {
             display: inline-block;
             background: var(--accent);
@@ -221,6 +243,7 @@
             body { padding: 1.2rem; }
             h1 { font-size: 2rem; }
             .hero-text { font-size: 1rem; }
+            .paper-link-hero { font-size: 1.1rem; padding: 1rem 1.8rem; max-width: 100%; }
             .open-question { padding: 2rem 0.5rem; }
             .open-question p { font-size: 1.05rem; }
             .open-question p.alt-question { font-size: 1.1rem; }
@@ -234,21 +257,21 @@
         <!-- Section 1: Hero -->
         <header id="hero">
             <h1>FREE THE MATH</h1>
-            <p class="hero-text">The same mathematics predicts market crashes, power grid blackouts, cardiac failures, and ecosystem collapse. At least six scientific fields discovered it independently. Most didn't know about each other. It took nine decades for anyone to notice.</p>
+            <p class="hero-text">The same mathematics predicts market crashes, power grid blackouts, cardiac failures, and ecosystem collapse. At least six fields arrived at it separately — with varying degrees of independence. Most had minimal awareness of each other's work. It took nine decades for anyone to map the full pattern.</p>
+            <a href="https://arxiv.org/abs/2601.22389" class="paper-link-hero">Read the Paper (arXiv)</a>
         </header>
 
         <!-- Section 2: What Is This Math? -->
         <section id="what">
             <h2>// WHAT IS THIS MATH?</h2>
-            <p>It predicts tipping points — moments when small changes cause huge effects.</p>
-            <p>A match starting a forest fire. A traffic jam forming out of nothing on a clear highway. A single tripped relay cascading into a regional blackout. A healthy heartbeat suddenly becoming erratic.</p>
-            <p>The mathematics that predicts all of these is the same mathematics. Physicists, biologists, financial analysts, and engineers each invented their own version — under different names, in different journals, without knowing the others existed.</p>
+            <p>It predicts tipping points. When does a power grid go from stressed to blacked out? When does a heartbeat go from irregular to dangerous? When does a market correction become a crash?</p>
+            <p>Turns out these are the same question, mathematically. Different fields figured that out at different times — and mostly didn't notice each other doing it.</p>
         </section>
 
         <!-- Section 3: The Pattern -->
         <section id="pattern">
             <h2>// THE PATTERN</h2>
-            <p>Between 1935 and 2025, researchers in at least six fields independently developed mathematical tools for detecting when complex systems are about to undergo dramatic change:</p>
+            <p>Between 1935 and 2025, researchers in at least six fields developed mathematical tools for detecting when systems are about to tip — largely in parallel:</p>
             <ul class="timeline">
                 <li><span class="field">Physics (1944)</span> — correlation length</li>
                 <li><span class="field">Biology (1994)</span> — heart rate scaling</li>
@@ -263,17 +286,14 @@
         <!-- Section 4: The Cost -->
         <section id="cost">
             <h2>// WHAT DID THIS COST?</h2>
-            <p>A cardiologist in 1996 could have used techniques a physicist published in 1971 — but would have needed to read statistical mechanics journals, recognize the connection through completely different notation, and translate the methods to biological data.</p>
-            <p>In practice, this rarely happened. The same tools were reinvented, published in domain-specific journals, and locked behind separate paywalls.</p>
-            <p>The cost was real: redundant research, delayed medical tools, and infrastructure vulnerabilities that could have been addressed sooner.</p>
+            <p>A cardiologist in 1996 could have used techniques a physicist published in 1971. But she'd have had to find a statistical mechanics journal, recognize the connection through completely different notation, and translate it to biological data. That almost never happened.</p>
+            <p>So the tools got reinvented. Multiple times. In separate journals behind separate paywalls. Meanwhile the applications waited.</p>
         </section>
 
         <!-- Section 5: The Open Question -->
         <section id="question" class="open-question">
             <h2>// THE OPEN QUESTION</h2>
-            <p>Was this fragmentation entirely natural — an inevitable consequence of disciplinary specialization?</p>
-            <p class="alt-question">Or did structural incentives actively maintain it?</p>
-            <p class="status">That question remains open.</p>
+            <p>Why did it stay fragmented for so long? The paper documents the pattern. It doesn't claim to fully explain it.</p>
         </section>
 
         <!-- Section 6: The Research / Paper -->
@@ -287,8 +307,7 @@
         <!-- Section 7: The Bottom Line -->
         <section id="bottom-line">
             <h2>// THE BOTTOM LINE</h2>
-            <p>The math works. It predicts market crashes, detects cardiac dysfunction, identifies when ecosystems are about to collapse, and warns of cascading infrastructure failures.</p>
-            <p>It applies to any interconnected system. It is fundamental — discoverable from first principles.</p>
+            <p>The math works. It's been validated across domains for decades. And it's fundamental — derivable from first principles, not proprietary to any field.</p>
             <p class="punchline">It should be free.</p>
         </section>
 
@@ -298,7 +317,9 @@
             <p><strong>Is this actually new?</strong><br>The individual discoveries are known. What's new is documenting the full convergence pattern — classifying each instance by type and providing citation network evidence that these fields remained siloed for decades.</p>
             <p><strong>How is this different from Sornette (2004)?</strong><br>Sornette's textbook is the most important prior synthesis — we cite it extensively. Our contribution adds a discovery classification taxonomy and quantitative citation analysis showing parallel development continued even after his synthesis.</p>
             <p><strong>Why arXiv and not a journal?</strong><br>arXiv is how physics papers reach the community. The paper is endorsed by Didier Sornette of ETH Zurich. Journal review is a separate, longer process — arXiv makes the work immediately accessible, consistent with our argument.</p>
-            <p><strong>What's the conflict of interest?</strong><br>Fully disclosed. The authors developed a framework (Appendix A) classified as "unvalidated candidate" because of the dual role. The convergence pattern in the main paper stands on six to nine other discoveries.</p>
+            <p><strong>What's the conflict of interest?</strong><br>Fully disclosed. The authors developed a framework (Appendix A) classified as "unvalidated candidate". The convergence pattern in the main paper stands on six to nine other discoveries.</p>
+            <p><strong>What about Catastrophe Theory?</strong><br>Related topic. The current paper doesn't cover it. A future revision may.</p>
+            <p><strong>Were these really independent discoveries?</strong><br>Degree of independence varies — the paper classifies each case. Some fields had zero cross-citation for decades. Others had partial awareness but still re-derived the tools from scratch.</p>
         </section>
 
         <!-- Section 8: Contact -->
