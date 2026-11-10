@@ -103,6 +103,24 @@ figcaption { font-size: 0.85rem; color: #94a3b8; padding: 0.6rem 1rem 0.8rem; bo
 .card.grid-power { border-top: 3px solid var(--cyan); }
 .card.traffic { border-top: 3px solid var(--green); }
 
+/* Tutorial card (after the intro) */
+.tut-card {
+  display: flex; align-items: center; gap: 1rem; max-width: 720px; margin: 1.5rem auto 0;
+  background: var(--card); border: 1px solid #334155; border-left: 3px solid var(--cyan);
+  border-radius: 12px; overflow: hidden; color: #cbd5e1; text-decoration: none;
+}
+.tut-card:hover { text-decoration: none; border-color: var(--cyan); }
+.tut-card img { display: block; width: 280px; max-width: 45%; height: auto; flex-shrink: 0; }
+.tut-body { display: block; padding: 0.7rem 1rem 0.7rem 0; min-width: 0; }
+.tut-title { display: block; font-weight: 650; color: #f1f5f9; line-height: 1.3; }
+.tut-card:hover .tut-title { color: var(--cyan); }
+.tut-line { display: block; font-size: 0.9rem; color: #94a3b8; margin-top: 0.2rem; }
+@media (max-width: 640px) {
+  .tut-card { flex-direction: column; align-items: stretch; gap: 0; }
+  .tut-card img { width: 100%; max-width: 100%; }
+  .tut-body { padding: 0.7rem 1rem 0.8rem; }
+}
+
 /* Callouts */
 .callout { border-left: 3px solid var(--amber); padding: 0.4rem 0 0.4rem 1.1rem; margin: 1.5rem 0; }
 .bottom-line .punch { font-size: 1.6rem; font-weight: 700; color: var(--heading); margin-top: 0.5rem; }
@@ -182,6 +200,13 @@ footer p { margin: 0 auto 0.6rem; }
     <figcaption><span class="tag">Simulated</span>A noisy system nears a tipping point. The valley holding it flattens, so it recovers more slowly and its swings grow before it tips.</figcaption>
   </figure>
   <p class="lead">Near a tipping point, a system shows <span class="tip" tabindex="0">critical slowing down<span class="tt">The system takes longer and longer to recover from small disturbances as it nears a tipping point.</span></span>: it recovers more slowly, and its <span class="tip" tabindex="0">variance<span class="tt">How widely the measurements swing around their average.</span></span> and <span class="tip" tabindex="0">memory<span class="tt">Autocorrelation: how much each measurement resembles the one just before it.</span></span> rise. At least six fields found the math that measures this, with varying degrees of independence and little contact between them.</p>
+  <a class="tut-card" href="https://energyscholar.github.io/web-annex/diamond-node/multi-critical/00-what-is-multicriticality.html">
+    <img src="img/multicriticality-thumb.png" width="560" height="160" alt="A critical Ising lattice: cyan and navy domains of every size, the fractal pattern at a tipping point.">
+    <span class="tut-body">
+      <span class="tut-title">Interactive tutorial: What is multicriticality?</span>
+      <span class="tut-line">What happens when tipping points interact. Four live demonstrations.</span>
+    </span>
+  </a>
 </header>
 
 <main>
