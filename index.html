@@ -1,346 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free The Math — The Same Mathematics Warns of Market Crashes, Blackouts, and Cardiac Failures</title>
-    <meta name="description" content="Free the Math: at least six scientific fields arrived at the same mathematics for detecting the approach to tipping points, largely without building on each other. It took nine decades for anyone to map the full pattern.">
-    <meta name="keywords" content="critical phenomena, cross-domain criticality, tipping point detection, early warning signals, cascading failure, independent discovery, mathematics, market crashes, power grid, cardiac, ecosystem collapse, phase transition, free the math, Stephenson, arXiv">
-    <meta name="author" content="Bruce Stephenson">
-    <link rel="canonical" href="https://freethemath.org">
-    <meta property="og:title" content="Free The Math">
-    <meta property="og:description" content="The same math warns of market crashes, power grid blackouts, and cardiac failures. At least six fields arrived at it separately. Most had minimal awareness of each other's work.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://freethemath.org">
-    <meta property="og:image" content="https://freethemath.org/og.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://freethemath.org/og.png">
-    <meta name="twitter:title" content="Free The Math">
-    <meta name="twitter:description" content="At least six scientific fields arrived at the same mathematics for detecting the approach to tipping points. Most had minimal awareness of each other's work.">
-    <style>
-        :root {
-            --bg: #0a0a0a;
-            --text: #e0e0e0;
-            --accent: #00ff88;
-            --accent-dim: #00aa55;
-            --border: #333;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free The Math — The Same Mathematics Warns of Market Crashes, Blackouts, and Heart Failure</title>
+<meta name="description" content="A short picture-led tutorial: as a system nears a tipping point it recovers more slowly and its swings grow. Physics, heart-rate analysis, finance, machine learning, power grids and traffic research each found the math that measures this, largely without building on each other.">
+<meta name="author" content="Bruce Stephenson">
+<link rel="canonical" href="https://freethemath.org">
+<meta name="color-scheme" content="dark light">
+<meta property="og:title" content="Free The Math">
+<meta property="og:description" content="The same math warns of market crashes, power grid blackouts and heart failure. At least six fields arrived at it separately, with little contact between them.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://freethemath.org">
+<meta property="og:image" content="https://freethemath.org/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free The Math">
+<meta name="twitter:description" content="At least six scientific fields arrived at the same mathematics for detecting the approach to tipping points, with little contact between them.">
+<meta name="twitter:image" content="https://freethemath.org/og.png">
+<style>
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #cbd5e1;
+  --heading: #f1f5f9;
+  --muted: #94a3b8;
+  --dim: #334155;
+  --link: #60a5fa;
+  --blue: #3b82f6;
+  --red: #ef4444;
+  --amber: #f59e0b;
+  --purple: #a855f7;
+  --cyan: #06b6d4;
+  --green: #22c55e;
+  --tt-bg: #1a2744;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f8fafc;
+    --text: #1e293b;
+    --heading: #0f172a;
+    --muted: #475569;
+    --dim: #cbd5e1;
+    --link: #1d4ed8;
+    --tt-bg: #ffffff;
+  }
+  /* figures keep their dark slate frame in both themes */
+  figure, .card { color: #cbd5e1; }
+  figure figcaption, .card p { color: #cbd5e1; }
+  .card h3, .card strong { color: #f1f5f9; }
+  .card .fn { color: #94a3b8; }
+}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 960px; margin: 0 auto; padding: 2.5rem 1rem 3rem; }
+h1, h2, h3 { color: var(--heading); font-weight: 650; line-height: 1.2; }
+h1 { font-size: 2.6rem; letter-spacing: -0.02em; text-align: center; }
+.subtitle { text-align: center; color: var(--muted); font-size: 1.15rem; margin: 0.5rem auto 2rem; max-width: 34em; }
+h2 { font-size: 1.6rem; margin: 3.5rem 0 1rem; padding-bottom: 0.45rem; border-bottom: 1px solid var(--dim); }
+h3 { font-size: 1.02rem; }
+p { margin-bottom: 1rem; max-width: 46em; }
+strong { color: var(--heading); }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible, summary:focus-visible, .tip:focus-visible {
+  outline: 2px solid var(--amber); outline-offset: 2px; border-radius: 3px;
+}
+.lead { font-size: 1.2rem; color: var(--heading); max-width: 40em; margin: 1.5rem auto 0; text-align: center; }
 
-        body {
-            font-family: 'Courier New', monospace;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem;
-            line-height: 1.8;
-            font-size: 16px;
-        }
+/* Figures */
+figure {
+  background: var(--card); border: 1px solid #334155; border-radius: 12px;
+  overflow: hidden; margin: 1.5rem 0;
+}
+figure img { display: block; width: 100%; height: auto; }
+figcaption { font-size: 0.85rem; color: #94a3b8; padding: 0.6rem 1rem 0.8rem; border-top: 1px solid #334155; }
+.tag { text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.72rem; font-weight: 700; color: #f59e0b; margin-right: 0.35em; }
 
-        .container {
-            max-width: 720px;
-            width: 100%;
-        }
+/* Field cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+.card { background: var(--card); border: 1px solid #334155; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+.card img { display: block; width: 100%; height: auto; }
+.card .body { padding: 0.8rem 1rem 1rem; border-top: 1px solid #334155; }
+.card h3 { margin-bottom: 0.3rem; color: #f1f5f9; }
+.card h3 .yr { color: #94a3b8; font-weight: 500; }
+.card p { font-size: 0.9rem; margin-bottom: 0; color: #cbd5e1; }
+.card .tag { font-size: 0.68rem; }
+.card.physics { border-top: 3px solid var(--blue); }
+.card.heart { border-top: 3px solid var(--red); }
+.card.finance { border-top: 3px solid var(--amber); }
+.card.ml { border-top: 3px solid var(--purple); }
+.card.grid-power { border-top: 3px solid var(--cyan); }
+.card.traffic { border-top: 3px solid var(--green); }
 
-        /* Section 1: Hero */
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-        }
+/* Callouts */
+.callout { border-left: 3px solid var(--amber); padding: 0.4rem 0 0.4rem 1.1rem; margin: 1.5rem 0; }
+.bottom-line .punch { font-size: 1.6rem; font-weight: 700; color: var(--heading); margin-top: 0.5rem; }
+.open-q { font-size: 1.2rem; color: var(--heading); }
 
-        h1 {
-            color: var(--accent);
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
-            letter-spacing: 0.05em;
-        }
+/* Links list */
+.links { list-style: none; margin: 1rem 0; }
+.links li { padding: 0.7rem 0; border-bottom: 1px solid var(--dim); }
+.links li:last-child { border-bottom: 0; }
+.links .note { display: block; font-size: 0.9rem; color: var(--muted); }
 
-        .hero-text {
-            color: var(--accent-dim);
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
+.citation { font-size: 0.98rem; border-left: 3px solid var(--blue); padding-left: 1rem; }
+.preprint { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--amber); border: 1px solid var(--amber); border-radius: 4px; padding: 0.05rem 0.4rem; margin-left: 0.3rem; white-space: nowrap; }
 
-        /* Body sections */
-        section {
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
-        }
+/* FAQ */
+details { border: 1px solid var(--dim); border-radius: 8px; margin: 0.7rem 0; }
+summary { cursor: pointer; padding: 0.75rem 1rem; font-weight: 600; color: var(--heading); list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary::before { content: '\25B8'; display: inline-block; margin-right: 0.6rem; color: var(--muted); transition: transform 0.2s; }
+details[open] > summary::before { transform: rotate(90deg); }
+details p { padding: 0 1rem 0.2rem 2.2rem; font-size: 0.95rem; }
 
-        h2 {
-            color: var(--accent);
-            font-size: 1.2rem;
-            margin-bottom: 1.2rem;
-            text-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
-        }
+/* Contact */
+.byline { font-size: 0.98rem; }
+.byline .name { font-size: 1.15rem; font-weight: 700; color: var(--heading); }
+.contact-links { list-style: none; margin: 0.6rem 0 1rem; }
+.contact-links li { margin: 0.2rem 0; overflow-wrap: anywhere; }
 
-        p {
-            margin-bottom: 1rem;
-        }
+footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--dim); text-align: center; font-size: 0.85rem; color: var(--muted); }
+footer p { margin: 0 auto 0.6rem; }
 
-        .highlight {
-            color: var(--accent);
-            font-weight: bold;
-        }
+/* Tooltips */
+.tip { position: relative; border-bottom: 1px dotted var(--muted); cursor: help; }
+.tip .tt {
+  display: none; position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+  background: var(--tt-bg); border: 1px solid var(--muted); border-radius: 8px;
+  padding: 0.55rem 0.8rem; font-size: 0.82rem; font-weight: 400; color: var(--text);
+  width: max-content; max-width: 300px; z-index: 10; line-height: 1.5; text-align: left;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+}
+.tip:hover .tt, .tip:focus .tt { display: block; }
+@media (max-width: 640px) {
+  .tip .tt { position: fixed; left: 1rem; right: 1rem; bottom: 1rem; transform: none; max-width: none; width: auto; }
+}
 
-        /* Timeline list in Section 3 */
-        .timeline {
-            list-style: none;
-            margin: 1.2rem 0;
-            padding-left: 1rem;
-        }
+/* Citation superscripts */
+.fn { font-size: 0.65em; vertical-align: super; line-height: 0; color: var(--muted); margin-left: 1px; }
+.fn:hover { color: var(--text); }
+.notes { margin-top: 2rem; font-size: 0.8rem; color: var(--muted); }
+.notes ol { padding-left: 1.4rem; }
+.notes li { margin-bottom: 0.25rem; }
+.notes a { color: var(--muted); }
 
-        .timeline li {
-            margin-bottom: 0.4rem;
-            color: var(--text);
-        }
-
-        .timeline li span.field {
-            color: var(--accent);
-        }
-
-        /* Section 5: Open Question — extra visual weight */
-        .open-question {
-            padding: 2.5rem 1.5rem;
-            margin-bottom: 3rem;
-            border-bottom: 1px solid var(--border);
-            text-align: center;
-        }
-
-        .open-question p {
-            font-size: 1.15rem;
-            line-height: 2;
-            margin-bottom: 1.2rem;
-        }
-
-        .open-question p.alt-question {
-            color: var(--accent);
-            font-size: 1.25rem;
-            text-shadow: 0 0 15px rgba(0, 255, 136, 0.25);
-        }
-
-        .open-question p.status {
-            color: var(--accent-dim);
-            font-style: italic;
-        }
-
-        /* Hero paper button — primary CTA */
-        .paper-link-hero {
-            display: block;
-            background: var(--accent);
-            color: var(--bg);
-            padding: 1.2rem 2.4rem;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.3rem;
-            margin: 2rem auto 0;
-            max-width: 360px;
-            min-height: 44px;
-            text-align: center;
-            transition: all 0.2s;
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
-        }
-
-        .paper-link-hero:hover {
-            background: var(--text);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
-        }
-
-        /* Inline paper link (for body text) */
-        .paper-link {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--bg);
-            padding: 0.9rem 1.8rem;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            margin: 1rem 0;
-            min-height: 44px;
-            transition: all 0.2s;
-        }
-
-        .paper-link:hover {
-            background: var(--text);
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
-        }
-
-        .appendix-note {
-            font-size: 0.95rem;
-            color: #aaa;
-        }
-
-        /* Section 7: "It should be free." emphasis */
-        .punchline {
-            color: var(--accent);
-            font-size: 1.4rem;
-            font-weight: bold;
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
-            margin-top: 0.5rem;
-        }
-
-        /* Section 8: Contact */
-        .contact-card {
-            border: 1px solid var(--border);
-            padding: 1.2rem;
-            margin-top: 1rem;
-        }
-
-        .contact-card h3 {
-            color: var(--accent);
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-card p {
-            font-size: 0.95rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-card a {
-            color: var(--accent-dim);
-            text-decoration: none;
-        }
-
-        .contact-card a:hover {
-            color: var(--accent);
-        }
-
-        .contact-secondary {
-            font-size: 0.85rem;
-            color: #999;
-        }
-
-        /* Footer with search-bridge */
-        footer {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-
-        .search-bridge {
-            font-size: 0.8rem;
-            color: #666;
-            line-height: 1.7;
-        }
-
-        .search-bridge a {
-            color: #888;
-            text-decoration: none;
-        }
-
-        .search-bridge a:hover {
-            color: var(--accent-dim);
-        }
-
-        @media (max-width: 600px) {
-            body { padding: 1.2rem; }
-            h1 { font-size: 2rem; }
-            .hero-text { font-size: 1rem; }
-            .paper-link-hero { font-size: 1.1rem; padding: 1rem 1.8rem; max-width: 100%; }
-            .open-question { padding: 2rem 0.5rem; }
-            .open-question p { font-size: 1.05rem; }
-            .open-question p.alt-question { font-size: 1.1rem; }
-            .punchline { font-size: 1.2rem; }
-        }
-    </style>
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.35rem; }
+  .lead { font-size: 1.05rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
 
-        <!-- Section 1: Hero -->
-        <header id="hero">
-            <h1>FREE THE MATH</h1>
-            <p class="hero-text">The same mathematics warns of market crashes, power grid blackouts, cardiac failures, and ecosystem collapse. At least six fields arrived at it separately — with varying degrees of independence. Most had minimal awareness of each other's work. It took nine decades for anyone to map the full pattern.</p>
-            <a href='https://arxiv.org/abs/2601.22389' class="paper-link-hero" >Read the Paper (arXiv)</a>
-        </header>
+<header>
+  <h1>Free The Math</h1>
+  <p class="subtitle">The same mathematics warns of market crashes, power-grid blackouts and heart failure.</p>
+  <figure>
+    <picture>
+      <source media="(max-width: 640px)" srcset="img/f0-hero-tall.svg">
+      <img src="img/f0-hero.svg" width="691" height="346" alt="Left: four curves showing a ball resting in a valley that gets shallower until it flattens out at the tipping point. Right: a noisy time series that drifts and then drops away at the tipping point, with its rolling variance and its memory (lag-1 autocorrelation) both rising in the run-up.">
+    </picture>
+    <figcaption><span class="tag">Simulated</span>A noisy system nears a tipping point. The valley holding it flattens, so it recovers more slowly and its swings grow before it tips.</figcaption>
+  </figure>
+  <p class="lead">Near a tipping point, a system shows <span class="tip" tabindex="0">critical slowing down<span class="tt">The system takes longer and longer to recover from small disturbances as it nears a tipping point.</span></span>: it recovers more slowly, and its <span class="tip" tabindex="0">variance<span class="tt">How widely the measurements swing around their average.</span></span> and <span class="tip" tabindex="0">memory<span class="tt">Autocorrelation: how much each measurement resembles the one just before it.</span></span> rise. At least six fields found the math that measures this, with varying degrees of independence and little contact between them.</p>
+</header>
 
-        <!-- Section 2: What Is This Math? -->
-        <section id="what">
-            <h2>// WHAT IS THIS MATH?</h2>
-            <p>It detects when systems approach tipping points. When does a power grid go from stressed to blacked out? When does a heartbeat go from irregular to dangerous? When does a market correction become a crash? The math identifies when these transitions become possible — even if it can't say exactly when they'll happen.</p>
-            <p>Turns out these are the same question, mathematically. Different fields figured that out at different times — and mostly didn't notice each other doing it.</p>
-        </section>
+<main>
+<section id="six">
+  <h2>The same signal, six times</h2>
+  <p>Each field gave the signal its own name. Underneath, all of them ask one question: how far do correlations reach? The math identifies when these transitions become possible — even if it can't say exactly when they'll happen.</p>
+  <div class="grid">
+    <article class="card physics">
+      <img src="img/f1-physics.svg" width="331" height="281" alt="A curve of correlation length against temperature, rising to a sharp peak at the critical point. Below it, three lattice snapshots: almost uniform below the critical point, clusters of every size at it, and fine-grained noise above it.">
+      <div class="body">
+        <h3>Physics <span class="yr">· 1944</span></h3>
+        <p><strong>Correlation length</strong>: how far one part of a magnet feels another. It grows without limit at the critical point.<sup><a class="fn" href="#n1" id="r1">1</a></sup> <span class="tag">Simulated</span>lattices; <span class="tag">Schematic</span>curve.</p>
+      </div>
+    </article>
+    <article class="card heart">
+      <img src="img/f2-heart.svg" width="331" height="252" alt="Log-log plot of DFA fluctuation against window size for three series. The slope alpha is about 0.5 for the uncorrelated series, 0.75 for the middle one and close to 1 for the long-range correlated one.">
+      <div class="body">
+        <h3>Heart rate <span class="yr">· 1994</span></h3>
+        <p><strong>DFA scaling exponent α</strong>. Near 0.5, beats are uncorrelated; near 1, correlations reach across long stretches. In hearts, α near 1 signals lost regulation.<sup><a class="fn" href="#n2" id="r2">2</a></sup> <span class="tag">Simulated</span>series.</p>
+      </div>
+    </article>
+    <article class="card finance">
+      <img src="img/f3-finance.svg" width="331" height="252" alt="Three simulated price paths. The top one, with Hurst exponent near 0.5, is jagged and directionless; the middle one, near 0.7, wanders in longer swings; the bottom one, near 0.9, moves in a smooth persistent trend.">
+      <div class="body">
+        <h3>Finance <span class="yr">· 1994</span></h3>
+        <p><strong>Hurst exponent H</strong>: market memory. At 0.5, prices walk at random. Above it, the past shapes the future. During market stress, H approaches 1.<sup><a class="fn" href="#n3" id="r3">3</a></sup> <span class="tag">Simulated</span>prices.</p>
+      </div>
+    </article>
+    <article class="card ml">
+      <img src="img/f4-ml.svg" width="331" height="252" alt="How long a single input pulse echoes inside a recurrent network, on a log scale. With spectral radius 0.5 the echo dies within 20 steps; at 0.8 within 50; at 0.95 and 0.99 it is still present after 120 steps.">
+      <div class="body">
+        <h3>Machine learning <span class="yr">· 2001</span></h3>
+        <p><strong>Spectral radius χ</strong> of a recurrent network. As χ nears 1, one input echoes longer and longer: the network sits at the edge of chaos.<sup><a class="fn" href="#n4" id="r4">4</a></sup> <span class="tag">Simulated</span>network.</p>
+      </div>
+    </article>
+    <article class="card grid-power">
+      <img src="img/f5-grid.svg" width="331" height="252" alt="Log-log plot of the chance of a blackout at least a given size. At light load the curve drops off steeply; as load rises it broadens, and at critical load it becomes a straight power law reaching huge sizes.">
+      <div class="body">
+        <h3>Power grids <span class="yr">· 2004</span></h3>
+        <p><strong>Cascade prediction</strong>. As load rises toward a critical point, blackout sizes spread into a power law, so huge blackouts become far likelier.<sup><a class="fn" href="#n5" id="r5">5</a></sup> <span class="tag">Simulated</span>cascades.</p>
+      </div>
+    </article>
+    <article class="card traffic">
+      <img src="img/f6-traffic.svg" width="331" height="252" alt="Flow against density for simulated traffic on a ring road. Flow rises steeply with density in free flow, peaks at the critical density, then falls steadily as jams form.">
+      <div class="body">
+        <h3>Traffic flow <span class="yr">· 1935 / 2004</span></h3>
+        <p><strong>Critical density</strong>: the congestion tipping point. Below it, traffic flows freely. Above it, jams form and flow falls.<sup><a class="fn" href="#n6" id="r6">6</a></sup> <span class="tag">Simulated</span>traffic.</p>
+      </div>
+    </article>
+  </div>
+</section>
 
-        <!-- Section 3: The Pattern -->
-        <section id="pattern">
-            <h2>// THE PATTERN</h2>
-            <p>Between 1935 and 2025, researchers in at least six fields developed mathematical tools for detecting when systems are about to tip — largely in parallel:</p>
-            <ul class="timeline">
-                <li><span class="field">Physics (1944)</span> — correlation length</li>
-                <li><span class="field">Biology (1994)</span> — heart rate scaling</li>
-                <li><span class="field">Finance (1994)</span> — market memory</li>
-                <li><span class="field">Machine Learning (2001)</span> — neural network stability</li>
-                <li><span class="field">Power Grids (2004)</span> — cascade prediction</li>
-                <li><span class="field">Traffic Flow (1935/2004)</span> — congestion tipping points</li>
-            </ul>
-            <p>Each field published in its own journals, invented its own terminology, and cited its own literature. Cross-domain awareness was minimal until after 2010.</p>
-        </section>
+<section id="pattern">
+  <h2>Six fields, one pattern, little contact</h2>
+  <figure>
+    <picture>
+      <source media="(max-width: 640px)" srcset="img/f7-timeline-tall.svg">
+      <img src="img/f7-timeline.svg" width="605" height="281" alt="Timeline from 1935 to 2025 with one row per field: traffic flow 1935 and 2004, physics 1944 and 1971, heart rate 1994, finance 1994, machine learning 2001, power grids 2004. The rows run in parallel with no links between them until a shaded band after 2010.">
+    </picture>
+    <figcaption><span class="tag">Schematic</span>Drawn from the dates on this page. The shaded band marks when cross-field contact begins, after 2010.</figcaption>
+  </figure>
+  <p>Each field published in its own journals, invented its own terminology, and cited its own literature. Cross-domain awareness was minimal until after 2010.</p>
+  <p class="callout">A cardiologist in 1996 could have used techniques a physicist published in 1971.<sup><a class="fn" href="#n7" id="r7">7</a></sup> But she'd have had to find a statistical mechanics journal, recognize the connection through completely different notation, and translate it to biological data. That almost never happened.</p>
+</section>
 
-        <!-- Section 4: The Cost -->
-        <section id="cost">
-            <h2>// WHAT DID THIS COST?</h2>
-            <p>A cardiologist in 1996 could have used techniques a physicist published in 1971. But she'd have had to find a statistical mechanics journal, recognize the connection through completely different notation, and translate it to biological data. That almost never happened.</p>
-            <p>So the tools got reinvented. Multiple times. In separate journals behind separate paywalls. Meanwhile the applications waited.</p>
-        </section>
+<section id="cost">
+  <h2>What this cost</h2>
+  <p>So the tools got reinvented. Multiple times. In separate journals behind separate paywalls. Meanwhile the applications waited.</p>
+</section>
 
-        <!-- Section 5: The Open Question -->
-        <section id="question" class="open-question">
-            <h2>// THE OPEN QUESTION</h2>
-            <p>Why did it stay fragmented for so long? The paper documents the pattern. It doesn't claim to fully explain it.</p>
-        </section>
+<section id="question">
+  <h2>The open question</h2>
+  <p class="open-q">Why did it stay fragmented for so long?</p>
+  <p>The paper documents the pattern. It doesn't claim to fully explain it.</p>
+</section>
 
-        <!-- Section 6: The Research / Paper -->
-        <section id="research">
-            <h2>// THE RESEARCH</h2>
-            <p>The full analysis is documented in a paper on arXiv, endorsed by Didier Sornette (ETH Zurich).</p>
-            <a href="https://arxiv.org/abs/2601.22389" class="paper-link">Read the full paper on arXiv — "Convergent Discovery of Critical Phenomena Mathematics Across Disciplines: A Cross-Domain Analysis"</a>
-            <p class="appendix-note">If you're short on time, start with Appendix B — the plain-language summary. You don't need the technical sections to understand what was found and why it matters.</p>
-        </section>
+<section id="bottom-line" class="bottom-line">
+  <h2>The bottom line</h2>
+  <p>The math works. It's been validated across domains for decades. And it's fundamental — derivable from first principles, not proprietary to any field.</p>
+  <p class="punch">It should be free.</p>
+</section>
 
-        <!-- Section 7: The Bottom Line -->
-        <section id="bottom-line">
-            <h2>// THE BOTTOM LINE</h2>
-            <p>The math works. It's been validated across domains for decades. And it's fundamental — derivable from first principles, not proprietary to any field.</p>
-            <p class="punchline">It should be free.</p>
-        </section>
+<section id="deeper">
+  <h2>Go deeper</h2>
+  <ul class="links">
+    <li><a href="https://energyscholar.github.io/web-annex/diamond-node/multi-critical/00-what-is-multicriticality.html">What is multicriticality?</a><span class="note">A tutorial on what happens when tipping points interact.</span></li>
+    <li><a href="https://arxiv.org/abs/2601.22389">The paper on arXiv</a><span class="note">Short on time? Start with the Plain Language Summary at the front of the paper.</span></li>
+  </ul>
+</section>
 
-        <!-- FAQ -->
-        <section id="faq">
-            <h2>// COMMON QUESTIONS</h2>
-            <p><strong>Is this actually new?</strong><br>The individual discoveries are known. What's new is documenting the full convergence pattern — classifying each instance by type and providing citation network evidence that these fields remained siloed for decades.</p>
-            <p><strong>How is this different from Sornette (2004)?</strong><br>Sornette's textbook is the most important prior synthesis — we cite it extensively. Our contribution adds a discovery classification taxonomy and quantitative citation analysis showing parallel development continued even after his synthesis.</p>
-            <p><strong>Why arXiv and not a journal?</strong><br>arXiv is how physics papers reach the community. The paper is endorsed by Didier Sornette of ETH Zurich. Journal review is a separate, longer process — arXiv makes the work immediately accessible, consistent with our argument.</p>
-            <p><strong>What's the conflict of interest?</strong><br>Fully disclosed. The authors developed a framework (Appendix A) classified as "unvalidated candidate". The convergence pattern in the main paper stands on six to nine other discoveries.</p>
-            <p><strong>What about Catastrophe Theory?</strong><br>Related topic. The current paper doesn't cover it. A future revision may.</p>
-            <p><strong>Were these really independent discoveries?</strong><br>Degree of independence varies — the paper classifies each case. Some fields had zero cross-citation for decades. Others had partial awareness but still re-derived the tools from scratch.</p>
-        </section>
+<section id="paper">
+  <h2>The paper</h2>
+  <p class="citation"><a href="https://arxiv.org/abs/2601.22389">Stephenson B.M., Macomber R. (2026). Convergent Discovery of Critical Phenomena Mathematics Across Disciplines. arXiv preprint arXiv:2601.22389.</a> <span class="preprint">Preprint</span></p>
+  <p>The page above teaches the idea; the paper holds the full evidence. It classifies each field's discovery, and tests citation networks for contact between fields.</p>
+  <p>Key prior work: Didier Sornette, <em>Critical Phenomena in Natural Sciences</em> (2004) — the most important prior synthesis; we build on it.<sup><a class="fn" href="#n8" id="r8">8</a></sup></p>
+</section>
 
-        <!-- Section 8: Contact -->
-        <section id="contact">
-            <h2>// CONTACT</h2>
-            <div class="contact-card">
-                <h3>Bruce Stephenson</h3>
-                <p class="contact-secondary">B.A. Physics, Reed College | Former CTO (6x) | Independent Researcher</p>
-                <p class="contact-secondary">Paper endorsed by Didier Sornette (ETH Zurich), author of <em>Critical Phenomena in Natural Sciences</em> — the leading cross-domain synthesis in this field.</p>
-                <p class="contact-secondary"><a href="mailto:energyscholar@gmail.com">energyscholar@gmail.com</a></p>
-                <p class="contact-secondary"><a href="https://linkedin.com/in/stephensonbruce">linkedin.com/in/stephensonbruce</a></p>
-                <p>Available for interviews — on record, on background, or deep technical walkthrough.</p>
-            </div>
-        </section>
+<section id="faq">
+  <h2>Common questions</h2>
+  <details>
+    <summary>Is this actually new?</summary>
+    <p>The individual discoveries are known. What's new is documenting the full convergence pattern — classifying each instance by type and providing citation network evidence that these fields remained siloed for decades.</p>
+  </details>
+  <details>
+    <summary>How is this different from Sornette (2004)?</summary>
+    <p>Sornette's <em>Critical Phenomena in Natural Sciences</em> is the most important prior synthesis; we build on it. Our contribution adds a discovery classification taxonomy and quantitative citation analysis showing parallel development continued even after his synthesis.</p>
+  </details>
+  <details>
+    <summary>Why arXiv and not a journal?</summary>
+    <p>arXiv is how physics papers reach the community. Journal review is a separate, longer process — arXiv makes the work immediately accessible, consistent with our argument.</p>
+  </details>
+  <details>
+    <summary>What's the conflict of interest?</summary>
+    <p>Fully disclosed. The authors' own framework is in the Supplementary Material and is excluded from the count; the pattern stands on the other discoveries.</p>
+  </details>
+  <details>
+    <summary>What about Catastrophe Theory?</summary>
+    <p>Related topic. The current paper doesn't cover it. A future revision may.</p>
+  </details>
+  <details>
+    <summary>Were these really independent discoveries?</summary>
+    <p>Degree of independence varies — the paper classifies each case. Some fields had zero cross-citation for decades. Others had partial awareness but still re-derived the tools from scratch.</p>
+  </details>
+</section>
 
-    </div>
+<section id="contact">
+  <h2>Contact</h2>
+  <div class="byline">
+    <p><span class="name">Bruce Stephenson</span> — Independent researcher, critical transitions and early-warning signals. B.A. Physics, Reed College.</p>
+    <ul class="contact-links">
+      <li>ORCID: <a href="https://orcid.org/0009-0005-6842-6686">0009-0005-6842-6686</a></li>
+      <li><a href="mailto:energyscholar@gmail.com">energyscholar@gmail.com</a></li>
+      <li><a href="https://linkedin.com/in/stephensonbruce">linkedin.com/in/stephensonbruce</a></li>
+    </ul>
+    <p>Available for interviews — on record, on background, or deep technical walkthrough.</p>
+  </div>
+</section>
 
-    <footer>
-        <p class="search-bridge">This site summarizes research on critical phenomena mathematics — the study of phase transitions, tipping points, and cascading failures across scientific disciplines. Full technical analysis: <a href="https://arxiv.org/abs/2601.22389">Stephenson &amp; Macomber (2026), "Convergent Discovery of Critical Phenomena Mathematics," arXiv</a>.</p>
-    </footer>
+<section class="notes" aria-label="Sources">
+  <ol>
+    <li id="n1">Onsager, <em>Phys. Rev.</em> 65, 117 (1944). <a href="#r1" aria-label="Back to text">↑</a></li>
+    <li id="n2">Peng et al., <em>Phys. Rev. E</em> 49, 1685 (1994); Peng et al., <em>Chaos</em> 5, 82 (1995). <a href="#r2" aria-label="Back to text">↑</a></li>
+    <li id="n3">Peters, <em>Fractal Market Analysis</em>, Wiley (1994). <a href="#r3" aria-label="Back to text">↑</a></li>
+    <li id="n4">Jaeger, GMD Report 148 (2001). <a href="#r4" aria-label="Back to text">↑</a></li>
+    <li id="n5">Crucitti, Latora &amp; Marchiori, <em>Phys. Rev. E</em> 69, 045104 (2004). <a href="#r5" aria-label="Back to text">↑</a></li>
+    <li id="n6">Greenshields, <em>Highway Research Board Proc.</em> 14, 448 (1935); Kerner, <em>The Physics of Traffic</em>, Springer (2004). <a href="#r6" aria-label="Back to text">↑</a></li>
+    <li id="n7">Wilson, <em>Phys. Rev. B</em> 4, 3174 (1971). <a href="#r7" aria-label="Back to text">↑</a></li>
+    <li id="n8">Sornette, <em>Critical Phenomena in Natural Sciences</em>, Springer (2004). <a href="#r8" aria-label="Back to text">↑</a></li>
+  </ol>
+</section>
+</main>
+
+<footer>
+  <p>This site summarizes research on critical phenomena mathematics — the study of phase transitions, tipping points, and cascading failures across scientific disciplines.</p>
+  <p>Figures are generated from simulated or schematic data.</p>
+  <p><a href="https://ko-fi.com/brucestephenson0303">Support this work on Ko-fi</a></p>
+</footer>
+
+</div>
 </body>
 </html>
